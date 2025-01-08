@@ -45,7 +45,7 @@ jobs:
       # Step 7: Collect Test Results (Optional)
       - name: Upload Test Results
         if: failure()  # Only if the tests fail
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: test-results  # Artifact name
           path: /path/to/test-results  # Path to the test results
