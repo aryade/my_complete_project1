@@ -34,13 +34,13 @@ jobs:
       # Step 5: Run Playwright UI tests
       - name: Run Playwright UI tests
         run: |
-          pytest login_page.py  # Run your Playwright tests
+          pytest login_page.py  # Run the Playwright tests
           pytest welcome_page.py
 
       # Step 6: Run Playwright APItests
       - name: Run Playwright API tests
         run: |
-          pytest api_test.py  # Run your Playwright tests
+          pytest api_test.py --junitxml=pytest-results.xml # Run the Playwright tests
 
       # Step 7: Collect Test Results (Optional)
       - name: Upload Test Results
@@ -48,7 +48,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: test-results  # Artifact name
-          path: /path/to/test-results  # Path to the test results
+          path: pytest-results.xml  # Path to the test results
 
       - name: Run tests
         run: |
