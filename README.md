@@ -1,5 +1,5 @@
-# my_complete_project1
-from version control to CI/CD Pipeline
+# A sample webapp project
+
 This project involves:
 
 1.Setting up a basic web application.
