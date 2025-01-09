@@ -38,14 +38,14 @@ jobs:
       - name: Run Playwright UI tests
         run: |
           source .venv/bin/activate  # Activate virtual environment
-          pytest login_page.py  # Run the Playwright tests
-          pytest welcome_page.py
+          pytest webapp/tests/ui_test/login_page.py  # Run the Playwright tests
+          pytest webapp/tests/ui_test/welcome_page.py
 
       # Step 6: Run Playwright APItests
       - name: Run Playwright API tests
         run: |
           source .venv/bin/activate  # Activate virtual environment
-          pytest api_test.py --junitxml=pytest-results.xml # Run the Playwright tests
+          pytest webapp/tests/api_test/api_test.py --junitxml=pytest-results.xml # Run the Playwright tests
 
       # Step 7: Collect Test Results (Optional)
       - name: Upload Test Results
