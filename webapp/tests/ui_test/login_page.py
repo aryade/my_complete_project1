@@ -6,7 +6,7 @@ BASE_URL = "http://127.0.0.1:5000"
 
 def test_valid_login():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=True)
         page = browser.new_page()
         page.goto(BASE_URL)
         page.fill('input#email', 'test@example.com')
@@ -17,7 +17,7 @@ def test_valid_login():
 
 def test_invalid_login():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=True)
         page = browser.new_page()
         page.goto(BASE_URL)
         page.fill('input#email', 'sample@example.com')
