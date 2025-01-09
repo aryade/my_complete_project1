@@ -45,6 +45,7 @@ jobs:
       - name: Run Playwright API tests
         run: |
           source .venv/bin/activate  # Activate virtual environment
+          playwright install 
           pytest webapp/tests/api_test/api_test.py --junitxml=pytest-results.xml # Run the Playwright tests
 
       # Step 7: Collect Test Results (Optional)
