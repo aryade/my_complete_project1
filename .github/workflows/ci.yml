@@ -31,7 +31,7 @@ jobs:
       - name: Start Flask app
         run: |
           source .venv/bin/activate  # Activate virtual environment
-          python webapp/app.py &  # Start Flask app in background
+          nohup python webapp/app.py &  # Start Flask app in background
         continue-on-error: true  # Ensure the pipeline continues even if the Flask app startup fails
 
       # Step 5: Run Playwright UI tests
@@ -45,7 +45,7 @@ jobs:
       - name: Run Playwright API tests
         run: |
           source .venv/bin/activate  # Activate virtual environment
-          playwright install 
+          playwright install
           pytest webapp/tests/api_test/api_test.py --junitxml=pytest-results.xml # Run the Playwright tests
 
       # Step 7: Collect Test Results (Optional)
