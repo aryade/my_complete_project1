@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 
 app = Flask(__name__)
 app.secret_key = 'secret-key'  # For session and flash messages
@@ -26,6 +26,20 @@ def do_login():
 @app.route('/welcome')
 def welcome():
     return render_template('welcome.html')
+
+@app.route('/api/login', methods=['POST'])
+def api_login():
+    data = request.json
+    # if not data:
+    #     return jsonify({"message": "Missing data"}), 400  # Get JSON data from the request
+    email = data.get('email')
+    password = data.get('password')
+
+    # Check if the credentials are valid
+    if email in USER_DATA and USER_DATA[email] == password:
+        return jsonify({"message": "Login successful", "status": "success"}), 200
+    else:
+        return jsonify({"message": "Invalid email or password", "status": "failure"}), 401
 
 if __name__ == '__main__':
     app.run(debug=True)

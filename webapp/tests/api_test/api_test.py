@@ -1,8 +1,21 @@
 import pytest
+import subprocess
+import time
 from playwright.sync_api import sync_playwright
 import json
 
 BASE_URL = "http://127.0.0.1:5000"
+
+def start_flask_server():
+    # Start the Flask app in a subprocess
+    server = subprocess.Popen(["python", "webapp/app.py"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    time.sleep(5)  # Wait for the server to start
+    return server
+
+def stop_flask_server(server):
+    # Terminate the Flask app
+    server.terminate()
+    server.wait()
 
 def test_api_valid_login():
     with sync_playwright() as p:
