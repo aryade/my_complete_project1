@@ -30,7 +30,7 @@ jobs:
       # Step 4: Start Flask app in the background
       - name: Start Flask app
         run: |
-          nohup python app.py &  # Start Flask app in background
+          python webapp/app.py &  # Start Flask app in background
         continue-on-error: true  # Ensure the pipeline continues even if the Flask app startup fails
 
       # Step 5: Run Playwright UI tests
